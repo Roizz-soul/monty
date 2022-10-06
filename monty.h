@@ -37,4 +37,5 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern char **global_command;
 #endif /* MONTY_H */
