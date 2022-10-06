@@ -17,7 +17,7 @@ if (stack == NULL)
 }
 while (temp != NULL)
 {
-	printf("%d/n", temp->n);
+	printf("%d\n", temp->n);
 	temp = temp->prev;
 }
 

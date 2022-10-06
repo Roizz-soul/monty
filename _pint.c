@@ -12,9 +12,9 @@ int _pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL) // if stack is empty
 	{
-		printf("L%u: can't pint, stack empty\n", line_number)
-			exit(EXIT_FAILURE);
+		printf("L%u: can't pint, stack empty\n", line_number);
+		return (-1);
 	}
-	printf("%d/n",head->n);
-	free(*stack);
+	printf("%d\n",head->n);
+	return (0);
 }
