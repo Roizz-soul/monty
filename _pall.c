@@ -3,22 +3,22 @@
 /**
  * _pall - prints all the values on the stack
  * @stack: head pointer
- *
- * Return: Always 0.
+ * @line_number: line number
+ * Return: check code
  */
 
 int _pall(stack_t **stack, unsigned int line_number)
 {
-	stack_t *temp = *stack, *new_node;
-}
-if (stack == NULL)
-{
-	return;
-}
-while (temp != NULL)
-{
-	printf("%d\n", temp->n);
-	temp = temp->prev;
-}
+	stack_t *temp = *stack;
 
-return (0);
+	if (stack == NULL)
+		return (0);
+
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->prev;
+	}
+
+	return (0);
+}

@@ -5,7 +5,7 @@
  * @stack: head pointer
  * @line_number: not used 
  *
- * Return: Always 0.
+ * Return: Check code.
  */
 
 int _push(stack_t **stack, unsigned int line_number)
@@ -15,7 +15,7 @@ int _push(stack_t **stack, unsigned int line_number)
 	new_node = (stack_t *)malloc(sizeof(stack_t));
 	if(new_node = NULL)
 	{
-		return (-1);
+		return (-2);
 	}
 	
 	new_node->n =; // address later
