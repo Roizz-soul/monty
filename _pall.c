@@ -4,15 +4,17 @@
  * _pall - prints all the values on the stack
  * @stack: head pointer
  * @line_number: line number
- * Return: check code
  */
 
-int _pall(stack_t **stack, unsigned int line_number)
+void _pall(stack_t **stack, __attribute__ ((unused)) unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
 	if (stack == NULL)
-		return (0);
+	{
+		perror("Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
 	while (temp != NULL)
 	{
@@ -20,5 +22,5 @@ int _pall(stack_t **stack, unsigned int line_number)
 		temp = temp->prev;
 	}
 
-	return (0);
+	return;
 }

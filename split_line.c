@@ -6,32 +6,43 @@
   */
 char **split_line(char *line)
 {
-	char **tokens = malloc(100 * sizeof(char *));
-	char **cmd_line = malloc(2 * sizeof(char *));
-	int length = 0, i, j;
+	char **tokens = malloc(2 * sizeof(char *));
+	/*char **cmd_line = malloc(2 * sizeof(char *));*/
+	int length = 0;/*, i, j;*/
 	char *delimiters = " \t\r\n";
 	char *token = strtok(line, delimiters);
+	/*instruction_t instruct[] = INSTRUCTIONS;
+	extern char __attribute__((unused)) **global_command;*/
+
+	if (tokens == NULL)
+		return (NULL);
 
 	while (token != NULL)
 	{
-		tokens[lenth] = token;
+		tokens[length] = token;
 		length++;
 		token = strtok(NULL, delimiters);
 	}
-	tokens[length] = NULL;
-	for (i = 0; tokens[i]; i++)
+	/*for (i = 0; tokens[i] != NULL; i++)
 	{
-		for (j = 0; instructions[j].opcode; j++)
+		for (j = 0; instruct[j].opcode; j++)
 		{
-			if (strcmp(tokens[i], instructions[j].opcode) == 0)
+			if (strcmp(instruct[j].opcode, tokens[i]) == 0)
 			{
 				cmd_line[0] = tokens[i];
-				cmd_line[1] = tokens[i + 1];
+				if (strcmp(tokens[i], "push") == 0)
+					cmd_line[1] = tokens[i + 1];
+				else
+					cmd_line[1] = NULL;
+				global_command = cmd_line;
 				free(tokens);
+				printf("here %s\n", global_command[1]);
 				return (cmd_line);
 			}
 		}
 	}
-	free(tokens);
-	return (NULL);
+
+	free(cmd_line);*/
+	global_command = tokens;
+	return (tokens);
 }

@@ -7,22 +7,31 @@
   *
   * Return: check code
   */
-int _exec(stack_t *head, char **cmd_line, unsigned int line_number)
+int _exec(stack_t *stack, char **cmd_line, unsigned int line_number)
 {
-	int i, j;
+	instruction_t instruct[] = INSTRUCTIONS;
+	int i;
 
-	if (cmd_line == NULL)
-		return (-1);
-
-	for (i = 0; cmd_line[i]; i++)
+	for (i = 0; instruct[i].opcode; i++)
 	{
-		for (j = 0; instructions[j].opcode; j++)
+		if (strcmp(instruct[i].opcode, cmd_line[0]) == 0)
 		{
-			if (strcmp(cmd_line[i], instructions[j].opcode) == 0)
+			instruct[i].f(&stack, line_number);
+			return (0);
+		}
+	}
+	/*for (i = 0; cmd_line[i]; i++)
+	{
+		for (j = 0; instruct[j].opcode; j++)
+		{
+			if (strcmp(cmd_line[i], instruct[j].opcode) == 0)
 			{
-				instructions[j].f(head, line_number);
+				instruct[j].f(&stack, line_number);
 				return (0);
 			}
 		}
-	}
+	}*/
+
+	fprintf(stderr, "L%u: unknown instruction %s", line_number, cmd_line[0]);
+	exit(EXIT_FAILURE);
 }
