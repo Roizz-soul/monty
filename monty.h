@@ -52,5 +52,6 @@ void _pall(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 char **split_line(char *line);
 int _exec(stack_t *head, char **cmd_line, unsigned int line_number);
+stack_t *head;
 
 #endif /* MONTY_H */

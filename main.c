@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
 	ssize_t nread;
 	unsigned int line_number = 0;
 	int b;
-	stack_t *stack = NULL;
 
 	if (argc < 2 || argc > 2)
 	{
@@ -32,13 +31,15 @@ int main(int argc, char *argv[])
 	while ((nread = getline(&lines, &len, fp)) != -1)
 	{
 		line_number++;
+		if (line_number == 1)
+			head = NULL;
 		command = split_line(lines);
 		if (command == NULL)
 		{
 			fprintf(stderr, "Error: malloc failed\n");
 			exit(EXIT_FAILURE);
 		}
-		b = _exec(stack, command, line_number);
+		b = _exec(head, command, line_number);
 		if (b == -4)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s", line_number, *command);
