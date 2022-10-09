@@ -1,6 +1,4 @@
-#include <stdio.h>
 #include "monty.h"
-
 /**
  * read_file - reads a bytecode file and runs commands
  * @filename: pathname to file
@@ -84,6 +82,31 @@ instruct_func get_op_func(char *str)
 	return (instruct[i].f);
 }
 
+/**
+ * isnumber - checks if a string is a number
+ * @str: string being passed
+ * Return: returns 1 if string is a number, 0 otherwise
+ */
+int isnumber(char *str)
+{
+	unsigned int i;
+
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (str[i])
+	{
+		if (str[0] == '-')
+		{
+			i++;
+			continue;
+		}
+		if (!isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 /**
  * parse_line - parses a line for an opcode and arguments
@@ -116,30 +139,4 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number)
 		}
 	}
 	return (op_code);
-}
-
-/**
- * isnumber - checks if a string is a number
- * @str: string being passed
- * Return: returns 1 if string is a number, 0 otherwise
- */
-int isnumber(char *str)
-{
-	unsigned int i;
-
-	if (str == NULL)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[0] == '-')
-		{
-			i++;
-			continue;
-		}
-		if (!isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
 }

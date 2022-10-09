@@ -26,22 +26,6 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct bus_s - variables -args, file, line content
- * @arg: value
- * @file: pointer to monty file
- * @content: line content
- * @lifi: flag change stack <-> queue
- * Description: carries values through the program
- */
-typedef struct bus_s
-{
-	char *arg;
-	FILE *file;
-	char *content;
-	int lifi;
-}  bus_t;
-extern bus_t bus;
-/**
  * struct instruction_s - opcoode and its function
  * @opcode: the opcode
  * @f: function to handle the opcode
@@ -76,6 +60,7 @@ char *parse_line(char *line, stack_t **stack, unsigned int line_number);
 typedef void (*instruct_func)(stack_t **stack, unsigned int line_number);
 instruct_func get_op_func(char *str);
 
+/*Fuxntions Monty*/
 void _pall(stack_t **stack, unsigned int line_number);
 void _push(stack_t **stack, unsigned int line_number);
 void _pint(stack_t **stack, unsigned int line_number);
@@ -85,21 +70,20 @@ void _nop(stack_t **stack, unsigned int line_number);
 void _rotl(stack_t **stack, unsigned int line_number);
 void _rotr(stack_t **stack, unsigned int line_number);
 
+/*Functions string ascci */
 void _pchar(stack_t **stack, unsigned int line_number);
 void _pstr(stack_t **stack, unsigned int line_number);
 
+/*Functions math*/
 void _sub(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void _mul(stack_t **stack, unsigned int line_number);
 void _div(stack_t **stack, unsigned int line_number);
 void _mod(stack_t **stack, unsigned int line_number);
 
-void _stack(stack_t **head, unsigned int counter);
-void _queue(stack_t **head, unsigned int counter);
-
-
-void addqueue(stack_t **head, int n);
-int isnumber(char *str);
-ssize_t getline(char **lineptr, size_t *n, FILE *stream);
-
+/*Utility functions*/
+void free_dlistint(stack_t *head);
+void dobfree(stack_t **stack);
+void dobfree2(stack_t **stack);
+int _isalpha(int c);
 #endif
